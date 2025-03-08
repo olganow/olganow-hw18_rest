@@ -1,6 +1,6 @@
 package constants;
 
 public class Credentials {
-    public static final String USERNAME = "username123";
-    public static final String PASSWORD = "Userpass-123$";
+    public static final String USERNAME = System.getProperty("usr");
+    public static final String PASSWORD = System.getProperty("psw");
 }

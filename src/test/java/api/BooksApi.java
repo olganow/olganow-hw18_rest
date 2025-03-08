@@ -2,6 +2,8 @@ package api;
 
 import io.qameta.allure.Step;
 import models.*;
+import models.response.BookArrayResponse;
+import models.response.BooksListResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +15,12 @@ import static specs.TestSpec.*;
 public class BooksApi {
 
     @Step("API. Add a book")
-    public AddBookResponse addBook(String isb, String token, String userId) {
+    public BooksListResponse addBook(String isb, String token, String userId) {
 
         List<IsbnBookModel> books = new ArrayList<>();
         books.add(new IsbnBookModel(isb));
 
-        AddBookBodyModel bookData = new AddBookBodyModel();
+        AddBookModel bookData = new AddBookModel();
         bookData.setUserId(userId);
         bookData.setCollectionOfIsbns(books);
         return given(requestSpec)
@@ -28,17 +30,17 @@ public class BooksApi {
                 .post(BOOKS_URL)
                 .then()
                 .spec(responseSpecWithStatusCode201)
-                .extract().as(AddBookResponse.class);
+                .extract().as(BooksListResponse.class);
     }
 
     @Step("API. Get books")
-    public BookCollectionResponse getBooks() {
+    public BookArrayResponse getBooks() {
         return given(requestSpec)
                 .when()
                 .get(BOOKS_URL)
                 .then()
                 .spec(responseSpecWithStatusCode200)
-                .extract().as(BookCollectionResponse.class);
+                .extract().as(BookArrayResponse.class);
     }
 
     @Step("API. Delete books")
