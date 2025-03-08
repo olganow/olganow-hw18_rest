@@ -29,6 +29,8 @@ public class TestBase {
         Configuration.browser = "chrome";
         Configuration.baseUrl = BASE_URL;
         Configuration.pageLoadStrategy = "eager";
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.timeout = 10000;
 
         RestAssured.baseURI = BASE_URL;
 
