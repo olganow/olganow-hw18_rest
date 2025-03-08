@@ -29,7 +29,6 @@ public class TestBase {
         Configuration.browser = "chrome";
         Configuration.baseUrl = BASE_URL;
         Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = System.getProperty("remoteUrl");
 
         RestAssured.baseURI = BASE_URL;
 
